@@ -1,0 +1,16 @@
+PODS:
+  - SDCloudKitModel (1.0.0)
+
+DEPENDENCIES:
+  - SDCloudKitModel (from `../SDCloudKitModel`)
+
+EXTERNAL SOURCES:
+  SDCloudKitModel:
+    :path: "../SDCloudKitModel"
+
+SPEC CHECKSUMS:
+  SDCloudKitModel: 35018a6d32f1ac7c1b5330be5e5d9a1fb6d8a93a
+
+PODFILE CHECKSUM: 5e74fca47e3a2f9e6b8e8643e98e6012dc4f96b3
+
+COCOAPODS: 1.11.3

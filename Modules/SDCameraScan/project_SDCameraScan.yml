@@ -1,0 +1,52 @@
+name: SDCameraScan
+
+include:
+  - ../../xcodegen-scripts/base.yml
+  - path: ../../xcodegen-scripts/base.yml
+    relativePaths: false
+
+fileGroups:
+  - SDCameraScan
+
+targets:
+  SDCameraScan:
+    type: framework
+    platform: iOS
+    sources:
+      - SDCameraScan
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).framework.SDCameraScan
+        GENERATE_INFOPLIST_FILE: YES
+  ExampleApps:
+    type: application
+    platform: iOS
+    sources:
+      - ExampleApps
+      - SDCameraScan/Resource/SDCameraScanAssets.xcassets
+    settings:
+      base:
+        PRODUCT_NAME: ExampleApps
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).SDCameraScanExample
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+    dependencies:
+      - framework: "${BUILT_PRODUCTS_DIR}/SDCameraScan.framework"
+        embed: true
+        codeSign: true
+
+schemes:
+  ExampleApps:
+    build:
+      targets:
+        ExampleApps: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release

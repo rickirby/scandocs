@@ -1,0 +1,52 @@
+name: SDCloudKitModel
+
+include:
+  - ../../xcodegen-scripts/base.yml
+  - path: ../../xcodegen-scripts/base.yml
+    relativePaths: false
+
+fileGroups:
+  - SDCloudKitModel
+
+targets:
+  SDCloudKitModel:
+    type: framework
+    platform: iOS
+    sources:
+      - SDCloudKitModel
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).framework.SDCloudKitModel
+        GENERATE_INFOPLIST_FILE: YES
+  ExampleApps:
+    type: application
+    platform: iOS
+    sources:
+      - ExampleApps
+      - ../../Scandocs/Supporting Files/Scandocs.xcdatamodeld
+    settings:
+      base:
+        PRODUCT_NAME: ExampleApps
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).SDCloudKitModelExample
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+    dependencies:
+      - framework: "${BUILT_PRODUCTS_DIR}/SDCloudKitModel.framework"
+        embed: true
+        codeSign: true
+
+schemes:
+  ExampleApps:
+    build:
+      targets:
+        ExampleApps: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release

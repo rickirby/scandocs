@@ -1,0 +1,22 @@
+PODS:
+  - SDCoreKit (1.0.0)
+  - SDScanKit (1.0.0):
+    - SDCoreKit
+
+DEPENDENCIES:
+  - SDCoreKit (from `../SDCoreKit`)
+  - SDScanKit (from `../SDScanKit`)
+
+EXTERNAL SOURCES:
+  SDCoreKit:
+    :path: "../SDCoreKit"
+  SDScanKit:
+    :path: "../SDScanKit"
+
+SPEC CHECKSUMS:
+  SDCoreKit: 098a4f1d9398d9f7de03cf33307b35f1a31a4941
+  SDScanKit: 8ccf2518b7bdadd7771ca2e07362fbee4f39ec78
+
+PODFILE CHECKSUM: b7e73c62f3858b61d9955dad9a6497848cfd3813
+
+COCOAPODS: 1.11.3

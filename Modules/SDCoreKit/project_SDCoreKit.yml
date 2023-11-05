@@ -1,0 +1,51 @@
+name: SDCoreKit
+
+include:
+  - ../../xcodegen-scripts/base.yml
+  - path: ../../xcodegen-scripts/base.yml
+    relativePaths: false
+
+fileGroups:
+  - SDCoreKit
+
+targets:
+  SDCoreKit:
+    type: framework
+    platform: iOS
+    sources:
+      - SDCoreKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).framework.SDCoreKit
+        GENERATE_INFOPLIST_FILE: YES
+  ExampleApps:
+    type: application
+    platform: iOS
+    sources:
+      - ExampleApps
+    settings:
+      base:
+        PRODUCT_NAME: ExampleApps
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).SDCoreKitExample
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+    dependencies:
+      - framework: "${BUILT_PRODUCTS_DIR}/SDCoreKit.framework"
+        embed: true
+        codeSign: true
+
+schemes:
+  ExampleApps:
+    build:
+      targets:
+        ExampleApps: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release

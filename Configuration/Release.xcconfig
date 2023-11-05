@@ -1,0 +1,24 @@
+//
+//  Release.xcconfig
+//  Scandocs
+//
+//  Created by Ricki Bin Yamin on 07/10/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_NAME = Scandocs
+BUNDLE_ID = com.scandocs.ios
+VALIDATE_PRODUCT = YES
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+TARGETED_DEVICE_FAMILY = 1
+IPHONEOS_DEPLOYMENT_TARGET = 15.0
+BUILD_NUMBER = 1
+VERSION_NAME = 1.0.0
+CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM = 6NMANHT3A2
+SWIFT_OPTIMIZATION_LEVEL = -O
+SWIFT_VERSION = 5.0
+SWIFT_COMPILATION_MODE = wholemodule
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE

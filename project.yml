@@ -1,0 +1,43 @@
+name: Scandocs
+
+include:
+  - xcodegen-scripts/base.yml
+  - path: xcodegen-scripts/base.yml
+    relativePaths: false
+
+settings:
+  base:
+    PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID)
+    BUILD_NUMBER: $(BUILD_NUMBER)
+    VERSION_NAME: $(VERSION_NAME)
+
+targets:
+  Scandocs:
+    type: application
+    platform: iOS
+    sources:
+      - path: Scandocs
+        name: Scandocs
+      - Modules/SDCameraScan/SDCameraScan/Resource/SDCameraScanAssets.xcassets
+    settings:
+      base:
+        PRODUCT_NAME: $(APP_NAME)
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+        CODE_SIGN_ENTITLEMENTS: "Scandocs/Supporting Files/Scandocs.entitlements"
+
+schemes:
+  Scandocs:
+    build:
+      targets:
+        Scandocs: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release

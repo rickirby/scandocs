@@ -1,0 +1,10 @@
+platform :ios, '15.0'
+
+target 'SDDatabaseWorker' do
+    use_frameworks!
+    pod 'SDCloudKitModel', :path => '../SDCloudKitModel'
+  
+    target 'ExampleApps' do
+      inherit! :complete
+    end
+  end

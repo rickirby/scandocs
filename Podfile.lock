@@ -1,0 +1,63 @@
+PODS:
+  - SDCameraScan (1.0.0):
+    - SDCoreKit
+    - SDScanKit
+  - SDCloudKitModel (1.0.0)
+  - SDCoreKit (1.0.0)
+  - SDDatabaseWorker (1.0.0):
+    - SDCloudKitModel
+  - SDDocsOrganizer (1.0.0):
+    - SDCloudKitModel
+    - SDCoreKit
+    - SDDatabaseWorker
+  - SDDocumentEditor (1.0.0):
+    - SDCloudKitModel
+    - SDCoreKit
+    - SDScanKit
+  - SDPhotosGallery (1.0.0):
+    - SDCloudKitModel
+    - SDCoreKit
+  - SDScanKit (1.0.0):
+    - SDCoreKit
+
+DEPENDENCIES:
+  - SDCameraScan (from `Modules/SDCameraScan`)
+  - SDCloudKitModel (from `Modules/SDCloudKitModel`)
+  - SDCoreKit (from `Modules/SDCoreKit`)
+  - SDDatabaseWorker (from `Modules/SDDatabaseWorker`)
+  - SDDocsOrganizer (from `Modules/SDDocsOrganizer`)
+  - SDDocumentEditor (from `Modules/SDDocumentEditor`)
+  - SDPhotosGallery (from `Modules/SDPhotosGallery`)
+  - SDScanKit (from `Modules/SDScanKit`)
+
+EXTERNAL SOURCES:
+  SDCameraScan:
+    :path: Modules/SDCameraScan
+  SDCloudKitModel:
+    :path: Modules/SDCloudKitModel
+  SDCoreKit:
+    :path: Modules/SDCoreKit
+  SDDatabaseWorker:
+    :path: Modules/SDDatabaseWorker
+  SDDocsOrganizer:
+    :path: Modules/SDDocsOrganizer
+  SDDocumentEditor:
+    :path: Modules/SDDocumentEditor
+  SDPhotosGallery:
+    :path: Modules/SDPhotosGallery
+  SDScanKit:
+    :path: Modules/SDScanKit
+
+SPEC CHECKSUMS:
+  SDCameraScan: a6ee2c74fab855cd7995eafc310d738553676cf0
+  SDCloudKitModel: 5d8674c8e83592202158f9d559b0d877d4106b81
+  SDCoreKit: 098a4f1d9398d9f7de03cf33307b35f1a31a4941
+  SDDatabaseWorker: 5d204c38a734cc4623974628c569777d5bfd3865
+  SDDocsOrganizer: d55712262a336514a89fc35e52e4f26d43616039
+  SDDocumentEditor: adcff5fc7dbe642a404590524f1ccb5110b1cc72
+  SDPhotosGallery: 2d7e7c2182a4c6f4136e605fbc738ba3415c35e6
+  SDScanKit: 8ccf2518b7bdadd7771ca2e07362fbee4f39ec78
+
+PODFILE CHECKSUM: 11015ba41b2bafbf297d843272f2c2457ac84e3b
+
+COCOAPODS: 1.11.3

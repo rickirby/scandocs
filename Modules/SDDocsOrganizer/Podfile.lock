@@ -1,0 +1,27 @@
+PODS:
+  - SDCloudKitModel (1.0.0)
+  - SDCoreKit (1.0.0)
+  - SDDatabaseWorker (1.0.0):
+    - SDCloudKitModel
+
+DEPENDENCIES:
+  - SDCloudKitModel (from `../SDCloudKitModel`)
+  - SDCoreKit (from `../SDCoreKit`)
+  - SDDatabaseWorker (from `../SDDatabaseWorker`)
+
+EXTERNAL SOURCES:
+  SDCloudKitModel:
+    :path: "../SDCloudKitModel"
+  SDCoreKit:
+    :path: "../SDCoreKit"
+  SDDatabaseWorker:
+    :path: "../SDDatabaseWorker"
+
+SPEC CHECKSUMS:
+  SDCloudKitModel: 5d8674c8e83592202158f9d559b0d877d4106b81
+  SDCoreKit: 098a4f1d9398d9f7de03cf33307b35f1a31a4941
+  SDDatabaseWorker: 5d204c38a734cc4623974628c569777d5bfd3865
+
+PODFILE CHECKSUM: 9d7614ffd3414add4c7025f1172aa2d1efb5be27
+
+COCOAPODS: 1.11.3

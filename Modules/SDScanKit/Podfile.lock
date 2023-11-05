@@ -1,0 +1,16 @@
+PODS:
+  - SDCoreKit (1.0.0)
+
+DEPENDENCIES:
+  - SDCoreKit (from `../SDCoreKit`)
+
+EXTERNAL SOURCES:
+  SDCoreKit:
+    :path: "../SDCoreKit"
+
+SPEC CHECKSUMS:
+  SDCoreKit: 45d14cd833c2fb697ff171a60bf92548dae5664a
+
+PODFILE CHECKSUM: 8fbb3ba50a9b332a88ae544f10bfefe03d9093ed
+
+COCOAPODS: 1.11.3

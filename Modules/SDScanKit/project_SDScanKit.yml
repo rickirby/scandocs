@@ -1,0 +1,52 @@
+name: SDScanKit
+
+include:
+  - ../../xcodegen-scripts/base.yml
+  - path: ../../xcodegen-scripts/base.yml
+    relativePaths: false
+
+fileGroups:
+  - SDScanKit
+
+targets:
+  SDScanKit:
+    type: framework
+    platform: iOS
+    sources:
+      - SDScanKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).framework.SDScanKit
+        GENERATE_INFOPLIST_FILE: YES
+  ExampleApps:
+    type: application
+    platform: iOS
+    sources:
+      - ExampleApps
+      - ../../Scandocs/Supporting Files/Scandocs.xcdatamodeld
+    settings:
+      base:
+        PRODUCT_NAME: ExampleApps
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).SDScanKitExample
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+    dependencies:
+      - framework: "${BUILT_PRODUCTS_DIR}/SDScanKit.framework"
+        embed: true
+        codeSign: true
+
+schemes:
+  ExampleApps:
+    build:
+      targets:
+        ExampleApps: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release

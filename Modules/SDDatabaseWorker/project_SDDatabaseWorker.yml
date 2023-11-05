@@ -1,0 +1,51 @@
+name: SDDatabaseWorker
+
+include:
+  - ../../xcodegen-scripts/base.yml
+  - path: ../../xcodegen-scripts/base.yml
+    relativePaths: false
+
+fileGroups:
+  - SDDatabaseWorker
+
+targets:
+  SDDatabaseWorker:
+    type: framework
+    platform: iOS
+    sources:
+      - SDDatabaseWorker
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).framework.SDDatabaseWorker
+        GENERATE_INFOPLIST_FILE: YES
+  ExampleApps:
+    type: application
+    platform: iOS
+    sources:
+      - ExampleApps
+    settings:
+      base:
+        PRODUCT_NAME: ExampleApps
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).SDDatabaseWorkerExample
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+    dependencies:
+      - framework: "${BUILT_PRODUCTS_DIR}/SDDatabaseWorker.framework"
+        embed: true
+        codeSign: true
+
+schemes:
+  ExampleApps:
+    build:
+      targets:
+        ExampleApps: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release

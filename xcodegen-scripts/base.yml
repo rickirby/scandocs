@@ -1,0 +1,42 @@
+# Base Configurations based on files configFiles
+configs:
+  Development: debug
+  AdHoc: debug
+  Release: release
+
+# Base Options Xcode project files 
+options:
+  groupSortPosition: top
+  deploymentTarget:
+    iOS: $(IPHONEOS_DEPLOYMENT_TARGET)
+
+# Base Configuration Files References
+configFiles:
+  Development: ../Configuration/Development.xcconfig
+  AdHoc: ../Configuration/AdHoc.xcconfig
+  Release: ../Configuration/Release.xcconfig
+
+# Base Configuration Settings
+settings:
+  base:
+    ENABLE_BITCODE: NO
+    VALIDATE_PRODUCT: $(VALIDATE_PRODUCT)
+    TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+    IPHONEOS_DEPLOYMENT_TARGET: $(IPHONEOS_DEPLOYMENT_TARGET)
+    CODE_SIGN_STYLE: $(CODE_SIGN_STYLE)
+    DEVELOPMENT_TEAM: $(DEVELOPMENT_TEAM)
+    CURRENT_PROJECT_VERSION: $(BUILD_NUMBER)
+    MARKETING_VERSION: $(VERSION_NAME)
+    VERSIONING_SYSTEM: apple-generic
+    SWIFT_VERSION: $(SWIFT_VERSION)
+    SWIFT_OPTIMIZATION_LEVEL: $(SWIFT_OPTIMIZATION_LEVEL)
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+    SWIFT_COMPILATION_MODE: $(SWIFT_COMPILATION_MODE)
+    DEBUG_INFORMATION_FORMAT: $(DEBUG_INFORMATION_FORMAT)
+  configs:
+    Development:
+      GCC_OPTIMIZATION_LEVEL: 0
+    Development:
+      GCC_OPTIMIZATION_LEVEL: s
+    Development:
+      GCC_OPTIMIZATION_LEVEL: s

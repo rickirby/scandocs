@@ -1,0 +1,54 @@
+name: SDDocsOrganizer
+
+include:
+  - ../../xcodegen-scripts/base.yml
+  - path: ../../xcodegen-scripts/base.yml
+    relativePaths: false
+
+fileGroups:
+  - SDDocsOrganizer
+
+targets:
+  SDDocsOrganizer:
+    type: framework
+    platform: iOS
+    sources:
+      - SDDocsOrganizer
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).framework.SDDocsOrganizer
+        GENERATE_INFOPLIST_FILE: YES
+  ExampleApps:
+    type: application
+    platform: iOS
+    sources:
+      - ExampleApps
+      - ../../Scandocs/Supporting Files/Scandocs.entitlements
+      - ../../Scandocs/Supporting Files/Scandocs.xcdatamodeld
+    settings:
+      base:
+        PRODUCT_NAME: ExampleApps
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID).SDDocsOrganizerExample
+        TARGETED_DEVICE_FAMILY: $(TARGETED_DEVICE_FAMILY)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(SWIFT_ACTIVE_COMPILATION_CONDITIONS)
+        CODE_SIGN_ENTITLEMENTS: "../../Scandocs/Supporting Files/Scandocs.entitlements"
+    dependencies:
+      - framework: "${BUILT_PRODUCTS_DIR}/SDDocsOrganizer.framework"
+        embed: true
+        codeSign: true
+
+schemes:
+  ExampleApps:
+    build:
+      targets:
+        ExampleApps: all
+    run:
+      config: Development
+    # test:
+    #   config: Development
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release
