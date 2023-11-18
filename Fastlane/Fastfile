@@ -16,28 +16,63 @@
 default_platform(:ios)
 
 platform :ios do
+  
+  desc "Setup CI Keychain to prevent stack due to default keychain locked"
+  lane :setupCIKeychain do
+    create_keychain(
+      name: ENV["MATCH_KEYCHAIN"],
+      password: ENV["MATCH_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true,
+      verbose: true
+    )
+  end
 
   desc "Preparing Certificate and Provisioning Profiles on New Device Setup"
   lane :prepare do
     match(
-      git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"],
       app_identifier: "com.scandocs.ios",
       type: "development",
       readonly: true
     )
 
     match(
-      git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"],
       app_identifier: "com.scandocs.ios",
       type: "adhoc",
       readonly: true
     )
 
     match(
-      git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"],
       app_identifier: "com.scandocs.ios",
       type: "appstore",
       readonly: true
+    )
+  end
+
+  desc "Build TestFlight"
+  lane :build_testflight do
+    match(
+      keychain_name: ENV["MATCH_KEYCHAIN"] ||  "login.keychain" ,
+      keychain_password: ENV["MATCH_PASSWORD"] || "",
+      app_identifier: "com.scandocs.ios",
+      type: "appstore",
+      readonly: true
+    )
+
+    build_app(
+      workspace: "Scandocs.xcworkspace",
+      scheme: "Scandocs",
+      configuration: "Release",
+      export_method: "app-store"
+    )
+
+    app_store_connect_api_key
+
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+      skip_submission: true
     )
   end
 end

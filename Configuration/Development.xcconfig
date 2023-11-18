@@ -11,6 +11,7 @@
 APP_NAME = Scandocs (Development)
 BUNDLE_ID = com.scandocs.ios
 APP_PROVISIONING_PROFILE = match Development com.scandocs.ios
+CODE_SIGN_IDENTITY = Apple Development: Ricki Bin Yamin (BWBZZ27H86)
 VALIDATE_PRODUCT = NO
 DEBUG_INFORMATION_FORMAT = dwarf
 TARGETED_DEVICE_FAMILY = 1
