@@ -171,6 +171,16 @@ final class SDScanAlbumsViewController: UIViewController, IScreenIdentifier {
             }
         }
     }
+    
+    private func configureEmptyState() {
+        let emptyView: SDScanAlbumsEmptyView = SDScanAlbumsEmptyView()
+        emptyView.frame = CGRect(x: view.center.x, y: view.center.y, width: view.bounds.size.width, height: view.bounds.size.height)
+        tableView.backgroundView = emptyView
+    }
+    
+    private func clearEmptyState() {
+        tableView.backgroundView = nil
+    }
 }
 
 extension SDScanAlbumsViewController {
@@ -334,6 +344,12 @@ extension SDScanAlbumsViewController: ISDScanAlbumsViewController {
 extension SDScanAlbumsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         interactor.getFetchedDocumentGroup()
+        
+        if tableData.count == 0 {
+            configureEmptyState()
+        } else {
+            clearEmptyState()
+        }
         
         return tableData.count
     }
