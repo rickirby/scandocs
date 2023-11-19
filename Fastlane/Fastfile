@@ -78,7 +78,10 @@ platform :ios do
       workspace: "Scandocs.xcworkspace",
       scheme: "Scandocs",
       configuration: "Release",
-      export_method: "app-store"
+      export_method: "app-store",
+      export_options: {
+        iCloudContainerEnvironment: "Production"
+      }
     )
 
     app_store_connect_api_key
@@ -124,7 +127,7 @@ platform :ios do
       export_method: "ad-hoc",
       export_options: {
         iCloudContainerEnvironment: "Development"
-      } 
+      }
     )
 
     UI.message("Upload to Firebase")
