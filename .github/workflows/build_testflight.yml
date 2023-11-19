@@ -28,21 +28,6 @@ jobs:
         run: |
           brew install xcodegen
 
-      - name: Setup CI Keychain
-        env:
-          MATCH_KEYCHAIN: ${{ vars.MATCH_KEYCHAIN }}
-          MATCH_PASSWORD: ${{ vars.MATCH_PASSWORD }}
-        run: |
-          bundle exec fastlane setupCIKeychain
-
-      - name: Change Build Number
-        run: |
-          ./Tooling/change_build_number.sh ${{ github.run_number }}
-
-      - name: Setup Project
-        run: |
-          ./setup.sh
-
       - name: Build IPA and Upload to TestFlight using Fastlane
         env:
           APP_STORE_CONNECT_API_KEY_IN_HOUSE: ${{ vars.APP_STORE_CONNECT_API_KEY_IN_HOUSE }}
@@ -53,5 +38,10 @@ jobs:
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ vars.MATCH_GIT_BASIC_AUTHORIZATION }}
           MATCH_KEYCHAIN: ${{ vars.MATCH_KEYCHAIN }}
           MATCH_PASSWORD: ${{ vars.MATCH_PASSWORD }}
+          DISCORD_WEBHOOK_URL: ${{ vars.DISCORD_WEBHOOK_URL }}
+          BUILD_NUMBER: ${{ github.run_number }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          COMMIT_SHA: ${{ github.sha }}
         run: |
           bundle exec fastlane build_testflight
