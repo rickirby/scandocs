@@ -11,6 +11,8 @@ target 'Scandocs' do
   pod 'SDDocumentEditor', :path => 'Modules/SDDocumentEditor'
   pod 'SDPhotosGallery', :path => 'Modules/SDPhotosGallery'
   pod 'SDScanKit', :path => 'Modules/SDScanKit'
+
+  pod 'FirebaseAnalytics'
 end
 
 post_install do |installer|

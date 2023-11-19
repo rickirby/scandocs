@@ -1,14 +1,14 @@
 # This workflow will build a Swift project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
-name: Build TestFlight
+name: Build Firebase
 
 on:
   workflow_dispatch:
 
 jobs:
-  build_testflight:
-    name: Build TestFlight
+  build_firebase:
+    name: Build Firebase
     runs-on: macos-latest
     
     steps:
@@ -28,13 +28,10 @@ jobs:
         run: |
           brew install xcodegen
 
-      - name: Build IPA and Upload to TestFlight using Fastlane
+      - name: Build IPA and Upload to Firebase using Fastlane
         env:
-          APP_STORE_CONNECT_API_KEY_IN_HOUSE: ${{ vars.APP_STORE_CONNECT_API_KEY_IN_HOUSE }}
-          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64: ${{ vars.APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64 }}
-          APP_STORE_CONNECT_API_KEY_KEY: ${{ vars.APP_STORE_CONNECT_API_KEY_KEY }}
-          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ vars.APP_STORE_CONNECT_API_KEY_KEY_ID }}
+          FIREBASE_APP_ID: ${{ vars.FIREBASE_APP_ID }}
+          FIREBASE_TOKEN: ${{ vars.FIREBASE_TOKEN }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ vars.MATCH_GIT_BASIC_AUTHORIZATION }}
           MATCH_KEYCHAIN: ${{ vars.MATCH_KEYCHAIN }}
           MATCH_PASSWORD: ${{ vars.MATCH_PASSWORD }}
@@ -44,4 +41,4 @@ jobs:
           BRANCH_NAME: ${{ github.ref_name }}
           COMMIT_SHA: ${{ github.sha }}
         run: |
-          bundle exec fastlane build_testflight
+          bundle exec fastlane build_firebase

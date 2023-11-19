@@ -66,7 +66,7 @@ platform :ios do
 
     UI.message("Prepare Provisioning Profiles")
     match(
-      keychain_name: ENV["MATCH_KEYCHAIN"] ||  "login.keychain" ,
+      keychain_name: ENV["MATCH_KEYCHAIN"] ||  "login.keychain",
       keychain_password: ENV["MATCH_PASSWORD"] || "",
       app_identifier: "com.scandocs.ios",
       type: "appstore",
@@ -91,6 +91,52 @@ platform :ios do
 
     notifySuccessBuild(
       destination: "TestFlight"
+    )
+  end
+
+  desc "Build Firebase"
+  lane :build_firebase do
+    build_number = ENV["BUILD_NUMBER"]
+
+    UI.message("Change build number to #{build_number}")
+    sh("cd .. && ./Tooling/change_build_number.sh #{build_number}")
+
+    UI.message("Setup Project")
+    sh("cd .. && ./setup.sh")
+
+    UI.message("Setup Custom Keychain")
+    setupCIKeychain
+
+    UI.message("Prepare Provisioning Profiles")
+    match(
+      keychain_name: ENV["MATCH_KEYCHAIN"] ||  "login.keychain",
+      keychain_password: ENV["MATCH_PASSWORD"] || "",
+      app_identifier: "com.scandocs.ios",
+      type: "adhoc",
+      readonly: true
+    )
+
+    UI.message("Build IPA")
+    build_app(
+      workspace: "Scandocs.xcworkspace",
+      scheme: "Scandocs",
+      configuration: "AdHoc",
+      export_method: "ad-hoc",
+      export_options: {
+        iCloudContainerEnvironment: "Development"
+      } 
+    )
+
+    UI.message("Upload to Firebase")
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_ID"],
+      release_notes: ENV["BRANCH_NAME"],
+      groups: "self-tester",
+      firebase_cli_token: ENV["FIREBASE_TOKEN"]
+    )
+
+    notifySuccessBuild(
+      destination: "Firebase"
     )
   end
 
