@@ -13,6 +13,7 @@ target 'Scandocs' do
   pod 'SDScanKit', :path => 'Modules/SDScanKit'
 
   pod 'FirebaseAnalytics'
+  pod 'FirebaseCrashlytics'
 end
 
 post_install do |installer|
