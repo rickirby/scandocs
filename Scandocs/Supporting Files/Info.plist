@@ -10,6 +10,12 @@
 	<string>$(VERSION_NAME)</string>
 	<key>CFBundleVersion</key>
 	<string>$(BUILD_NUMBER)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(APP_NAME)</string>
+	<key>CFBundleName</key>
+	<string>$(APP_NAME)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -41,5 +47,7 @@
 	<string>The app needs access to save scanned documents in your photo library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>The app needs access your camera to capture the document that will be scanned</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
 </dict>
 </plist>
